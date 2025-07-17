@@ -29,4 +29,4 @@ while len(guesses_taken) < 50:
 
 
 
-screen.exitonclick()
+screen.mainloop()
