@@ -8,4 +8,8 @@ screen.addshape(image)
 turtle.shape(image)
 
 
-screen.exitonclick()
+
+
+
+
+turtle.mainloop()
