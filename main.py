@@ -19,6 +19,13 @@ while len(guesses_taken) < 50:
                                     prompt='Please, enter your guess.').title()
 
     if player_guess == 'Exit':
+        study = []
+        for state in new_data:
+            if state not in guesses_taken:
+                study.append(state)
+
+        transferable = pd.DataFrame(study, columns=['To Study'])
+        transferable.to_csv('States to Study.csv', index=False)
         break
     if player_guess in new_data:
         guesses_taken.append(player_guess)
@@ -29,12 +36,6 @@ while len(guesses_taken) < 50:
         pen.goto(x= location.x.item(),y= location.y.item())
         pen.write(location.state.item())
     
-study = []
-for state in new_data:
-    if state not in guesses_taken:
-        study.append(state)
 
-transferable = pd.DataFrame(study, columns=['To Study'])
-transferable.to_csv('States to Study.csv', index=False)
 
 screen.mainloop()
