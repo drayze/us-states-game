@@ -15,8 +15,11 @@ guesses_taken = []
 
 while len(guesses_taken) < 50:
     
-    player_guess = screen.textinput(title=f'{len(guesses_taken)}/50 States Correct', prompt='Please, enter your guess.').title()
+    player_guess = screen.textinput(title=f'{len(guesses_taken)}/50 States Correct',
+                                    prompt='Please, enter your guess.').title()
 
+    if player_guess == 'Exit':
+        break
     if player_guess in new_data:
         guesses_taken.append(player_guess)
         pen = turtle.Turtle()
@@ -26,7 +29,12 @@ while len(guesses_taken) < 50:
         pen.goto(x= location.x.item(),y= location.y.item())
         pen.write(location.state.item())
     
+study = []
+for state in new_data:
+    if state not in guesses_taken:
+        study.append(state)
 
-
+transferable = pd.DataFrame(study, columns=['To Study'])
+transferable.to_csv('States to Study.csv', index=False)
 
 screen.mainloop()
