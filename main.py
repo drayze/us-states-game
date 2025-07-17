@@ -15,7 +15,7 @@ guesses_taken = []
 
 while len(guesses_taken) < 50:
     
-    player_guess = screen.textinput(title='Guess a State', prompt='Please, enter your guess.').title()
+    player_guess = screen.textinput(title=f'{len(guesses_taken)}/50 States Correct', prompt='Please, enter your guess.').title()
 
     if player_guess in new_data:
         guesses_taken.append(player_guess)
